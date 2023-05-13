@@ -4,12 +4,25 @@ void main() {
   runApp(const MyApp());
 }
 
+class Player {
+  String name;
+  int points;
+  Player(this.name, this.points);
+  @override
+  String toString() {
+    return name + " " + points.toString();
+  }
+}
+
+late Player player;
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    player = Player('', -1);
     return MaterialApp(
       title: 'Vueling Destino: Barcelona',
       theme: ThemeData(
@@ -49,17 +62,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+  TextEditingController _nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -95,32 +98,42 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 100,
               width: 100,
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             const Text(
               'Demuestra que conoces más que el resto de pasajeros sobre Barcelona.',
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             TextField(
-              obscureText: true,
-              decoration: InputDecoration(
+              controller: _nameController,
+              obscureText: false,
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'Nombre',
                 hintText: 'Introduce tu nombre',
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             ElevatedButton(
-              onPressed: () {},
-              child: Text("JUGAR"),
+              onPressed: () {
+                player.name = _nameController.text;
+                print('Player name: ' + player.name);
+              },
+              child: const Text("JUGAR"),
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             ElevatedButton(
               onPressed: () {},
-              child: Text("RANKING"),
+              child: const Text("RANKING"),
             ),
           ],
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    super.dispose();
   }
 }
