@@ -35,5 +35,8 @@ List<Question> dummyQuestions() {
         "Iglesia de Santa María del Pi"
       ],
       0));
+  list.add(Question("¿Qué artista famoso diseñó el Parque Güell?",
+      ["Antoni Gaudí", "Pablo Picasso", "Salvador Dalí", "Joan Miró"], 0));
+  list.shuffle();
   return list;
 }
