@@ -1,18 +1,9 @@
 import 'package:flutter/material.dart';
+import 'models.dart';
 import 'game.dart';
 
 void main() {
   runApp(const MyApp());
-}
-
-class Player {
-  String name;
-  int points;
-  Player(this.name, this.points);
-  @override
-  String toString() {
-    return name + " " + points.toString();
-  }
 }
 
 late Player player;
@@ -62,8 +53,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  TextEditingController _nameController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             // Column is also a layout widget. It takes a list of children and
             // arranges them vertically. By default, it sizes itself to fit its
@@ -120,7 +110,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   player.name = _nameController.text;
                   if (player.name.isEmpty) return;
-                  print('Player name: ' + player.name);
                   Navigator.push(
                       context,
                       MaterialPageRoute(

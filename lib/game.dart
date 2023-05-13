@@ -26,7 +26,7 @@ class _GameMainState extends State<Game> {
     }
     return Scaffold(
       body: Center(
-        child: Text('Holaaaaaaaaaaaaa'),
+        child: Text('[Pantalla de juego]'),
       ),
     );
   }
