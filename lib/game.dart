@@ -11,6 +11,7 @@ class Game extends StatefulWidget {
 
 class _GameMainState extends State<Game> {
   bool creatingGame = true;
+  bool enabledButtons = true;
   final List<Question> questions = dummyQuestions();
   int iq = 0; // Question iterator
   List<Color> buttonColors = [
@@ -28,6 +29,16 @@ class _GameMainState extends State<Game> {
         buttonColors[i] = Colors.red;
         buttonColors[iq] = Colors.green;
       }
+      enabledButtons = false;
+      Timer timer = Timer(const Duration(seconds: 3), () {
+        setState(() {
+          enabledButtons = true;
+          iq++;
+          for (int j = 0; j < buttonColors.length; j++) {
+            buttonColors[j] = Colors.yellow;
+          }
+        });
+      });
     });
   }
 
@@ -35,7 +46,7 @@ class _GameMainState extends State<Game> {
   Widget build(BuildContext context) {
     if (creatingGame) {
       // ignore: unused_local_variable
-      Timer timer = Timer(const Duration(seconds: 1), () {
+      Timer timer = Timer(const Duration(seconds: 3), () {
         setState(() {
           creatingGame = false;
         });
@@ -61,7 +72,7 @@ class _GameMainState extends State<Game> {
                   width: 200,
                   child: ElevatedButton(
                       onPressed: () {
-                        pressedButton(0);
+                        if (enabledButtons) pressedButton(0);
                       },
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
@@ -75,7 +86,7 @@ class _GameMainState extends State<Game> {
                   width: 200,
                   child: ElevatedButton(
                       onPressed: () {
-                        pressedButton(1);
+                        if (enabledButtons) pressedButton(1);
                       },
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
@@ -89,7 +100,7 @@ class _GameMainState extends State<Game> {
                   width: 200,
                   child: ElevatedButton(
                       onPressed: () {
-                        pressedButton(2);
+                        if (enabledButtons) pressedButton(2);
                       },
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
@@ -103,7 +114,7 @@ class _GameMainState extends State<Game> {
                   width: 200,
                   child: ElevatedButton(
                       onPressed: () {
-                        pressedButton(3);
+                        if (enabledButtons) pressedButton(3);
                       },
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
