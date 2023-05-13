@@ -23,7 +23,7 @@ class _GameMainState extends State<Game> {
 
   void pressedButton(int i) {
     setState(() {
-      if (i == iq) {
+      if (i == questions[iq].correctAnswer) {
         buttonColors[i] = Colors.green;
       } else {
         buttonColors[i] = Colors.red;
