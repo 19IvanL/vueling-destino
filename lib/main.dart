@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'models.dart';
 import 'game.dart';
-import 'package:http/http.dart' as http;
+import 'ranking.dart';
 
 void main() {
   runApp(const MyApp());
@@ -55,21 +55,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final TextEditingController _nameController = TextEditingController();
-
-  Future<void> _makeHttpRequest() async {
-    final response =
-        await http.get(Uri.parse('http://127.0.0.1:3000/getRanking'));
-
-    if (response.statusCode == 200) {
-      // Request successful, parse the response data
-      final responseData = response.body;
-      // Handle the response data
-      print(responseData);
-    } else {
-      // Request failed, handle the error
-      print('Request failed with status: ${response.statusCode}');
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -136,7 +121,13 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               const SizedBox(height: 5),
               ElevatedButton(
-                onPressed: _makeHttpRequest,
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => RankingPage(),
+                      ));
+                },
                 child: const Text("RANKING"),
               ),
             ],
