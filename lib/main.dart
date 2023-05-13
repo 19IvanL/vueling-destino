@@ -1,4 +1,3 @@
-// Material
 import 'package:flutter/material.dart';
 import 'models.dart';
 import 'game.dart';
