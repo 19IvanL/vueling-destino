@@ -3,6 +3,15 @@ import 'package:vueling_destino/models.dart';
 import 'main.dart';
 import 'dart:async';
 
+const TextStyle headerStyle = TextStyle(
+  fontSize: 30,
+  fontWeight: FontWeight.bold,
+);
+
+const TextStyle textStyle = TextStyle(
+  fontSize: 20,
+);
+
 class Game extends StatefulWidget {
   const Game({Key? key}) : super(key: key);
   @override
@@ -67,10 +76,7 @@ class _GameMainState extends State<Game> {
                 Text(
                   questions[iq].question,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: headerStyle,
                 ),
                 SizedBox (
                   height: 20,
@@ -87,6 +93,7 @@ class _GameMainState extends State<Game> {
                       child: Text(
                         questions[iq].answers[0],
                         textAlign: TextAlign.center,
+                        style: textStyle,
                       )),
                 ),
                 SizedBox (
@@ -104,6 +111,7 @@ class _GameMainState extends State<Game> {
                       child: Text(
                         questions[iq].answers[1],
                         textAlign: TextAlign.center,
+                        style: textStyle,
                       )),
                 ),
                 SizedBox (
@@ -121,6 +129,7 @@ class _GameMainState extends State<Game> {
                       child: Text(
                         questions[iq].answers[2],
                         textAlign: TextAlign.center,
+                        style: textStyle,
                       )),
                 ),
                 SizedBox (
@@ -138,6 +147,7 @@ class _GameMainState extends State<Game> {
                       child: Text(
                         questions[iq].answers[3],
                         textAlign: TextAlign.center,
+                        style: textStyle,
                       )),
                 ),
               ],
