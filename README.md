@@ -8,3 +8,4 @@ Vueling Destino: Barcelona is a quiz game available in flights to Barcelona. Pas
 flutter build web
 flutter run -d web-server
 ```
+In order to run it properly you'll also need [vueling-server](https://github.com/19IvanL/vueling-server) working as the back-end.
