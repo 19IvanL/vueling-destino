@@ -95,6 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
               const SizedBox(height: 10),
               const Text(
                 'Demuestra que conoces más que el resto de pasajeros sobre Barcelona.',
+                style: headerStyle,
               ),
               const SizedBox(height: 10),
               TextField(
