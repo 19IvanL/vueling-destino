@@ -41,7 +41,7 @@ class RankingPage extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return ListTile(
                       title: Text(jsonArray[index]["nombre"]),
-                      subtitle: Text(jsonArray[index]["puntos"]),
+                      subtitle: Text(jsonArray[index]["puntos"].toString()),
                     );
                   }));
         }
