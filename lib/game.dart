@@ -50,7 +50,7 @@ class _GameMainState extends State<Game> {
       if (i == questions[iq].correctAnswer) {
         buttonColors[i] = Colors.green;
         makeHttpPutRequest(
-            'http://localhost:3000/document/${player.name}/addTen');
+            'http://192.168.110.145:3000/document/${player.name}/addTen');
       } else {
         buttonColors[i] = Colors.red;
         buttonColors[questions[iq].correctAnswer] = Colors.green;
@@ -79,9 +79,10 @@ class _GameMainState extends State<Game> {
       });
       return Scaffold(
         body: Center(
-          child: Text('¿Preparado, ' + player.name + '?',
-                  style: headerStyle,
-                ),
+          child: Text(
+            '¿Preparad@, ' + player.name + '?',
+            style: headerStyle,
+          ),
         ),
       );
     }

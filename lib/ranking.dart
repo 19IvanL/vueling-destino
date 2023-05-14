@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-//import 'main.dart'
-import 'models.dart';
 import 'dart:convert';
 
-Future<String> makeHttpRequest(String url) async {
+Future<String> makeHttpGetRequest(String url) async {
   final response = await http.get(Uri.parse(url));
 
   if (response.statusCode == 200) {
@@ -26,7 +24,7 @@ class RankingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<String>(
-      future: makeHttpRequest("http://127.0.0.1:3000/getRanking"),
+      future: makeHttpGetRequest("http://192.168.110.145:3000/getRanking"),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const CircularProgressIndicator(); // Display a loading indicator while data is being fetched

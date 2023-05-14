@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'models.dart';
 import 'game.dart';
 import 'ranking.dart';
+import 'dart:ui';
 
 void main() {
   runApp(const MyApp());
@@ -65,75 +66,102 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            // Column is also a layout widget. It takes a list of children and
-            // arranges them vertically. By default, it sizes itself to fit its
-            // children horizontally, and tries to be as tall as its parent.
-            //
-            // Invoke "debug painting" (press "p" in the console, choose the
-            // "Toggle Debug Paint" action from the Flutter Inspector in Android
-            // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-            // to see the wireframe for each widget.
-            //
-            // Column has various properties to control how it sizes itself and
-            // how it positions its children. Here we use mainAxisAlignment to
-            // center the children vertically; the main axis here is the vertical
-            // axis because Columns are vertical (the cross axis would be
-            // horizontal).
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Image.asset(
-                'assets/images/vueling_logo.png',
-                height: 200,
-                width: 200,
-              ),
-              const SizedBox(height: 10),
-              const Text(
-                'Demuestra que conoces más que el resto de pasajeros sobre Barcelona.',
-                style: headerStyle,
-              ),
-              const SizedBox(height: 10),
-              TextField(
-                controller: _nameController,
-                obscureText: false,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Nombre',
-                  hintText: 'Introduce tu nombre',
-                ),
-              ),
-              const SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () {
-                  player.name = _nameController.text;
-                  if (player.name.isEmpty) return;
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Game(),
-                      ));
-                },
-                child: const Text("JUGAR", style: textStyle,),
-              ),
-              const SizedBox(height: 5),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => RankingPage(),
-                      ));
-                },
-                child: const Text("RANKING", style: textStyle,),
-              ),
-            ],
+      body: Stack(
+        children: [
+          Container(
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+            image: AssetImage('assets/images/barcelona.jpg'),
+            fit: BoxFit.cover,
+          ))),
+          BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
+            child: Container(
+              color: Colors.white.withOpacity(0.5),
+            ),
           ),
-        ),
+          Center(
+            // Center is a layout widget. It takes a single child and positions it
+            // in the middle of the parent.
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                // Column is also a layout widget. It takes a list of children and
+                // arranges them vertically. By default, it sizes itself to fit its
+                // children horizontally, and tries to be as tall as its parent.
+                //
+                // Invoke "debug painting" (press "p" in the console, choose the
+                // "Toggle Debug Paint" action from the Flutter Inspector in Android
+                // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
+                // to see the wireframe for each widget.
+                //
+                // Column has various properties to control how it sizes itself and
+                // how it positions its children. Here we use mainAxisAlignment to
+                // center the children vertically; the main axis here is the vertical
+                // axis because Columns are vertical (the cross axis would be
+                // horizontal).
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Image.asset(
+                    'assets/images/vueling_logo.png',
+                    height: 200,
+                    width: 200,
+                  ),
+                  const SizedBox(height: 10),
+                  const Text(
+                    'Demuestra que conoces más que el resto de pasajeros sobre Barcelona.',
+                    style: headerStyle,
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 10),
+                  TextField(
+                    controller: _nameController,
+                    obscureText: false,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Nombre',
+                      hintText: 'Introduce tu nombre',
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      textStyle: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    onPressed: () {
+                      player.name = _nameController.text;
+                      if (player.name.isEmpty) return;
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Game(),
+                          ));
+                    },
+                    child: const Text("JUGAR"),
+                  ),
+                  const SizedBox(height: 5),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      textStyle: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => RankingPage(),
+                          ));
+                    },
+                    child: const Text("RANKING"),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
