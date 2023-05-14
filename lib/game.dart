@@ -62,7 +62,9 @@ class _GameMainState extends State<Game> {
       });
       return Scaffold(
         body: Center(
-          child: Text('¿Preparado, ' + player.name + '?'),
+          child: Text('¿Preparado, ' + player.name + '?',
+                  style: headerStyle,
+                ),
         ),
       );
     }
