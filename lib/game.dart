@@ -67,6 +67,13 @@ class _GameMainState extends State<Game> {
                 Text(
                   questions[iq].question,
                   textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox (
+                  height: 20,
                 ),
                 SizedBox(
                   width: 200,
@@ -82,6 +89,9 @@ class _GameMainState extends State<Game> {
                         textAlign: TextAlign.center,
                       )),
                 ),
+                SizedBox (
+                  height: 20,
+                ),
                 SizedBox(
                   width: 200,
                   child: ElevatedButton(
@@ -96,6 +106,9 @@ class _GameMainState extends State<Game> {
                         textAlign: TextAlign.center,
                       )),
                 ),
+                SizedBox (
+                  height: 20,
+                ),
                 SizedBox(
                   width: 200,
                   child: ElevatedButton(
@@ -109,6 +122,9 @@ class _GameMainState extends State<Game> {
                         questions[iq].answers[2],
                         textAlign: TextAlign.center,
                       )),
+                ),
+                SizedBox (
+                  height: 20,
                 ),
                 SizedBox(
                   width: 200,
