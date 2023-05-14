@@ -118,7 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         builder: (context) => Game(),
                       ));
                 },
-                child: const Text("JUGAR"),
+                child: const Text("JUGAR", style: textStyle,),
               ),
               const SizedBox(height: 5),
               ElevatedButton(
@@ -129,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         builder: (context) => RankingPage(),
                       ));
                 },
-                child: const Text("RANKING"),
+                child: const Text("RANKING", style: textStyle,),
               ),
             ],
           ),
