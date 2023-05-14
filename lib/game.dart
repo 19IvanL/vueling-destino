@@ -27,7 +27,7 @@ class _GameMainState extends State<Game> {
         buttonColors[i] = Colors.green;
       } else {
         buttonColors[i] = Colors.red;
-        buttonColors[iq] = Colors.green;
+        buttonColors[questions[iq].correctAnswer] = Colors.green;
       }
       enabledButtons = false;
       Timer timer = Timer(const Duration(seconds: 3), () {
