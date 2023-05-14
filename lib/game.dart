@@ -2,6 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:vueling_destino/models.dart';
 import 'main.dart';
 import 'dart:async';
+import 'package:http/http.dart' as http;
+
+Future<String> makeHttpPutRequest(String url) async {
+  final response = await http.put(Uri.parse(url));
+
+  if (response.statusCode == 200) {
+    // Request successful, parse the response data
+    final responseData = response.body;
+    // Handle the response data
+    return responseData;
+  } else {
+    // Request failed, handle the error
+    throw Exception();
+  }
+}
 
 const TextStyle headerStyle = TextStyle(
   fontSize: 30,
@@ -34,6 +49,8 @@ class _GameMainState extends State<Game> {
     setState(() {
       if (i == questions[iq].correctAnswer) {
         buttonColors[i] = Colors.green;
+        makeHttpPutRequest(
+            'http://localhost:3000/document/${player.name}/addTen');
       } else {
         buttonColors[i] = Colors.red;
         buttonColors[questions[iq].correctAnswer] = Colors.green;
@@ -80,7 +97,7 @@ class _GameMainState extends State<Game> {
                   textAlign: TextAlign.center,
                   style: headerStyle,
                 ),
-                SizedBox (
+                SizedBox(
                   height: 20,
                 ),
                 SizedBox(
@@ -98,7 +115,7 @@ class _GameMainState extends State<Game> {
                         style: textStyle,
                       )),
                 ),
-                SizedBox (
+                SizedBox(
                   height: 20,
                 ),
                 SizedBox(
@@ -116,7 +133,7 @@ class _GameMainState extends State<Game> {
                         style: textStyle,
                       )),
                 ),
-                SizedBox (
+                SizedBox(
                   height: 20,
                 ),
                 SizedBox(
@@ -134,7 +151,7 @@ class _GameMainState extends State<Game> {
                         style: textStyle,
                       )),
                 ),
-                SizedBox (
+                SizedBox(
                   height: 20,
                 ),
                 SizedBox(
